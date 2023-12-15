@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/">Dashbord</a></li>
+
+                <% if (userType == "admin") { %>
+                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/appointment">Appointment</a></li>
+                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/listCandidates">list Candidates</a></li>
+                <% } %>
+
+                <% if (userType == "examiner") { %>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/examiner">Examiner</a></li>
+                    <% } %>
+                
+                <% if (userType == "driver") { %>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/g">G Test</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/g2">G2 Test</a></li>
+                <% } %>
+
+                <% if (loggedIn) { %>
+                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/logout">Logout</a></li>
+                <% } %>
+
+                <% if (!loggedIn) { %>
+                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/login">Login</a></li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>

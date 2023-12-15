@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("layout/head") -%>
+
+    <body>
+        <header>
+            <h1 class="site-heading text-center text-faded d-none d-lg-block">
+                
+                <span class="site-heading-lower">Drive Test</span>
+            </h1>
+        </header>
+
+        <%- include("layout/navbar") -%>
+
+        <main>
+            <section class="page-section cta">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-9 mx-auto">
+                            <div class="cta-inner bg-faded text-center rounded">
+                                <form action="/createSlots" method="POST">
+                                    
+                                            <label for="date">Select Date:</label>
+                                            <input type="date" id="date" name="date" class="form-control" required><br>
+                                            <label>Time slots</label>
+                                          
+                                            <div class="form-check">
+                                                <input type="checkbox" value="09:00 - 09:30" id="time1"name=time1 checked>
+                                                <label class="form-check-label" for="time1">
+                                                    09:00 - 09:30
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="checkbox" value="09:30 - 10:00" id="time2" name="time2">
+                                                <label class="form-check-label" for="time2">
+                                                    09:30 - 10:00
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="checkbox" value="10:00 - 10:30" name="time3">
+                                                <label class="form-check-label" for="time3">
+                                                    10:00 - 10:30
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="checkbox" value="10:30 - 11:00" name="time4">
+                                                <label class="form-check-label" for="time4">
+                                                    10:30 - 11:00
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="checkbox" value="11:00 - 11:30" name="time5">
+                                                <label class="form-check-label" for="time5">
+                                                    11:00 - 11:30
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="checkbox" value="11:30 - 12:00" name="time6">
+                                                <label class="form-check-label" for="time6">
+                                                    11:30 - 12:00
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="checkbox" value="12:00 - 12:30" name="time7">
+                                                <label class="form-check-label" for="time7">
+                                                    12:00 - 12:30
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="checkbox" value="12:30 - 01:00" name="time8">
+                                                <label class="form-check-label" for="time8">
+                                                    12:30 - 01:00
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="checkbox" value="01:00 - 01:30" name="time9">
+                                                <label class="form-check-label" for="time9">
+                                                    01:00 - 01:30
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="checkbox" value="01:30 - 02:00" name="time10">
+                                                <label class="form-check-label" for="time10">
+                                                    01:30 - 02:00
+                                                </label>
+                                            </div>
+                                            <div class="mt-1"></div>
+                                            <div>
+                                                <input type="submit" class="btn btn-primary" value="ADD">
+                                            </div>
+                                </form>                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <%- include("layout/footer") -%>
+        <%- include("layout/script") -%>
+    </body>
+</html>

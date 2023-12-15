@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("layout/head") -%>
+
+    <body>
+        <header>
+            <h1 class="site-heading text-center text-faded d-none d-lg-block">
+                
+                <span class="site-heading-lower">Drive Test</span>
+            </h1>
+        </header>
+        
+        <%- include("layout/navbar") -%>
+
+        <main class="mb-4">
+            <section class="page-section cta">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-9 mx-auto">
+                            <div class="cta-inner bg-faded text-center rounded">
+                              
+                                <form action="/g" method="post">
+                                    <h3> Personal Information</h3>
+                                    <label for="fname">First Name:</label>
+                                    <input type="text" id="fname" name="fname" value="<%= user.fname  %>" class="form-control" ><br>
+                                    <label for="lname">Last Name:</label>
+                                    <input type="text" id="lname" name="lname" value="<%= user.lname  %>" class="form-control" ><br>
+                                    <label for="licenseNO">License Number:</label>
+                                    <input type="text" id="licenseNO" name="licenseNO" value="<%= user.licenseNO  %>" class="form-control" ><br>
+                                    <label for="age">Age:</label>
+                                    <input type="number" id="age" name="age" value="<%= user.age  %>" class="form-control" ><br>
+                                    <label for="dob">DOB:</label>
+                                    <input type="date" id="dob" name="dob" value="<%= user.dob  %>" class="form-control" ><br><br>
+                
+                                    <h3>Car details</h3>
+                                    <p>*You can change the car details.</details></p>
+                                    <label for="make">make:</label>
+                                    <input type="text" id="make" name="make" value="<%= user.carDetails.make  %>" class="form-control" placeholder="Enter ie make"><br>
+                                    <label for="model">Model:</label>
+                                    <input type="text" id="model" name="model" value="<%=  user.carDetails.model  %>" class="form-control" placeholder="Enter model"><br>
+                                    <label for="year">Year:</label>
+                                    <input type="number" id="year" name="year" value="<%=  user.carDetails.year  %>" class="form-control" placeholder="Enter year"><br>
+                                    <label for="plateNo">Plat Number:</label>
+                                    <input type="text" id="plateNo" name="plateNo" value="<%=  user.carDetails.plateNo  %>" class="form-control" placeholder="Enter plat number"><br>
+                                    <input type="submit" value="Submit" id="Update" class="btn btn-primary"><br><br>
+                                </form>
+
+                                <% if (!(user.appointmentBooked.length > 0)) {%>
+                                  <form action="/showTimeSlotG" method="POST">
+                                    <h3>Book appointment</h3>
+                                    <label for="bookdate">Select Date:</label>
+                                    <input type="date" id="bookdate" name="bookdate" class="form-control" min= "date.now()" /><br />
+                                  
+                                    <input type="submit" value="Show Time" class="btn btn-primary" id="show" /><br /><br />
+                                  </form> 
+                                 
+                                  <form action="/bookAppointmentG" method="post">
+                                    <%if ( appoint.length == 0) { %>
+                                    <label class="form-check-label">No time slot available</label>
+                                    <% } else { %> 
+                                      <label class="form-check-label">Available Time Slots</label>
+                                      <% for (var i=0; i < appoint.length; i++) { %>
+                                      <div class="form-check">
+                  
+                                        <input type="radio" value="<%=appoint[i]._id %>" name="aptId"
+                                        <%=appoint[i].isTimeSlotAvailable?'enabled':'disabled'%> >
+                  
+                                        <label class="form-check-label" for="time">
+                                          <%= appoint[i].time %>
+                                        </label>
+                                      </div>
+                                      <% } %>
+                                      <% }%>
+                                      <div>
+                                        <input type="submit" class="btn btn-primary" value="Booked Slots" id="bookedslots" />
+                                      </div>
+                                  </form>
+                                  <%} else if (user.testResult != null && user.testType == "G"){ %>
+                                    <% if (user.testResult == true ){ %>
+                                      <h3>You passed in test.</h3>
+                                  <%} else{ %>
+                                    <h3>You failed in test.</h3> 
+                                    <% } %>
+                                    <%} else{ %>
+                                    <h4>Your appointment is booked for G</h4> 
+                                  <% }%>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <%- include("layout/footer") -%>
+        <%- include("layout/script") -%>
+        
+    </body>
+</html>

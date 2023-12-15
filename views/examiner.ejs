@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("layout/head") -%>
+
+  <body>
+    <header>
+      <h1 class="site-heading text-center text-faded d-none d-lg-block">
+        <span class="site-heading-lower">Drive Test</span>
+      </h1>
+    </header>
+
+    <%- include("layout/navbar") -%>
+
+    <main>
+      <section class="page-section cta">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-9 mx-auto">
+              <div class="cta-inner bg-faded text-center rounded">
+                <div style="margin: 10px 0px;">
+                  <label for="textType">Filter by test type:</label>
+                  <select name="testType" id="testType">
+                    <option value="all">All</option>
+                    <option value="G2">G2</option>
+                    <option value="G">G</option>
+                  </select>
+                </div>
+                <table class="extable" id="userTable">
+                  <tr>
+                    <th>Name</th>
+                    <th>Test Type</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                  </tr>
+                  <% for (var i=0; i < user.length; i++) { %> <%
+                  if(user[i].appointmentBooked.length>0) {%>
+                  <tr data-test-type="<%= user[i].testType %>">
+                    <td>
+                      <a href="/getUserDetails/<%=  user[i]._id %>">
+                        <%= user[i].fname %> <%= user[i].lname %></a
+                      >
+                    </td>
+
+                    <td><%= user[i].testType %></td>
+
+                    <td><%= user[i].appointmentBooked[0] %></td>
+                    <td><%= user[i].appointmentBooked[1] %></td>
+                  </tr>
+                  <% }%> <% }%>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      document
+        .getElementById("testType")
+        .addEventListener("change", filterTable);
+      function filterTable() {
+        var selectedTestType = document.getElementById("testType").value;
+        var rows = document
+          .getElementById("userTable")
+          .getElementsByTagName("tr");
+        console.log("rows", rows);
+        for (var i = 1; i < rows.length; i++) {
+          // Start from 1 to skip the header row
+          var testType = rows[i].getAttribute("data-test-type");
+          console.log("test", selectedTestType, testType);
+          if (selectedTestType === "all" || selectedTestType === testType) {
+            rows[i].style.display = "";
+          } else {
+            rows[i].style.display = "none";
+          }
+        }
+      }
+    </script>
+    <%- include("layout/footer") -%> <%- include("layout/script") -%>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("layout/head") -%>
+
+    <body>
+        <header>
+            <h1 class="site-heading text-center text-faded d-none d-lg-block">
+               
+                <span class="site-heading-lower">Drive Test</span>
+            </h1>
+        </header>
+
+        <%- include("layout/navbar") -%>
+        
+        <main>
+            <section class="page-section cta">
+                <div class="container">
+                    <div class="row">
+                        <div class="grid-container">
+                        <div class="col-xl-9 mx-auto">
+                            <div class="cta-inner bg-faded text-center rounded">
+                                <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="/signup"  method="POST" >
+                                    <h3>Signup</h3>
+                                    <label for="username">User Name:</label>
+                                    <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>        
+                                    <label for="password">Password:</label>
+                                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                                    <label for="password">Confirm Password:</label>
+                                    <input type="password" class="form-control" id="cpassword" placeholder="Password" name="cpassword" required>
+                                    <label for="userType">User Type:</label><br>
+                                    <select name="userType">
+                                        <option value="driver">Driver</option>
+                                        <option value="examiner">Examiner</option>
+                                        <option value="admin">Admin</option>
+                                    </select><br>
+                                    <% if (signUpMessage) { %>
+                                        <strong style="color: red;"><%= signUpMessage %></strong>
+                                    <% } %><br><br>
+                                    <input type="submit" name="submit" id="submit">   
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-xl-9 mx-auto">
+                            <div class="cta-inner bg-faded text-center rounded">
+                                <form method="POST" action="/login" id="contactForm" data-sb-form-api-token="API_TOKEN" >
+                                    <h3>Login</h3>
+                                    <label for="username">User Name:</label>
+                                    <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>        
+                                    <label for="password">Password:</label>
+                                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                                    <% if (loginMessage) { %>
+                                                <strong style="color: red;"><%= loginMessage %></strong>    
+                                    <% } %><br><br> 
+                                    <input type="submit" name="submit" id="submit">   
+                                </form>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <%- include("layout/footer") -%>
+        <%- include("layout/script") -%>
+        
+    </body>
+</html>

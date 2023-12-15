@@ -1,0 +1,73 @@
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Drive Kiosk</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../public/css/styles.css" type="text/css" rel="stylesheet" />
+</head>
+
+    <body>
+        <header>
+            <h1 class="site-heading text-center text-faded d-none d-lg-block">
+               
+                <span class="site-heading-lower">Drive Test</span>
+            </h1>
+        </header>
+
+        <%- include("layout/navbar") -%>
+
+        <main>
+            <section class="page-section cta">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-9 mx-auto">
+                            <div>
+                                   
+                                <h1><%= selectedUser.fname%> <%= selectedUser.lname%></h1>
+                                <h3>User Car Details</h3>
+                                <div class="carDetails">
+                                    <p>Make: <%=selectedUser.carDetails.make%></p>
+                                    <p>Model: <%=selectedUser.carDetails.model%></p>
+                                    <p>Year: <%=selectedUser.carDetails.year%></p>
+                                    <p>Plate Number: <%= selectedUser.carDetails.plateNo%></p>
+                                </div>
+                            </div>
+                            <div>
+                                <form action="/store/results/<%= selectedUser._id%>" method="post">
+                                    
+                                    <label for="results">Results</label><br>
+                                
+                                    <select name="result" id="">
+                                      <option value="pass">Pass</option>
+                                      <option value="fail">Fail</option>
+                                    </select><br>
+                                    <label for="examComments"><b>Comments</b></label>
+                                    <textarea name="testComments" id="" cols="30" rows="10"></textarea>
+        
+
+                                    <br/>
+                                    <button type="submit">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <%- include("layout/footer") -%>
+        <%- include("layout/script") -%>
+    </body>
+</html>
+
+
